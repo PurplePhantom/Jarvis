@@ -13,3 +13,9 @@ D:\Visual Studio 2013\Projects\Jarvis\Jarvis\obj\Debug\Jarvis.csprojResolveAssem
 F:\Visual Studio 2013\Projects\Jarvis\Jarvis\bin\Debug\Jarvis.exe.config
 F:\Visual Studio 2013\Projects\Jarvis\Jarvis\obj\Debug\Jarvis.exe
 F:\Visual Studio 2013\Projects\Jarvis\Jarvis\obj\Debug\Jarvis.pdb
+C:\repos\Jarvis\Jarvis\bin\Debug\Jarvis.exe.config
+C:\repos\Jarvis\Jarvis\obj\Debug\Jarvis.exe
+C:\repos\Jarvis\Jarvis\obj\Debug\Jarvis.pdb
+C:\repos\Jarvis\Jarvis\obj\Debug\Jarvis.csprojResolveAssemblyReference.cache
+C:\repos\Jarvis\Jarvis\bin\Debug\Jarvis.exe
+C:\repos\Jarvis\Jarvis\bin\Debug\Jarvis.pdb

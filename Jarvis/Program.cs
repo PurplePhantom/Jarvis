@@ -10,7 +10,7 @@ namespace Jarvis
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
 #region start up script
             //starting my program
@@ -232,7 +232,7 @@ namespace Jarvis
                                     synth.Speak("go");
                                     Thread.Sleep(12000);
                                     synth.Speak("ten seconds are done");
-                                    Thread.Sleep(2000)
+                                    Thread.Sleep(2000);
                                     synth.Speak("please do your noise spray that you should have gotten");
                                     break;
                                 }
