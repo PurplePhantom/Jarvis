@@ -12,6 +12,13 @@ namespace Jarvis
     //jake
     class Program
     {
+        static  ConsoleKeyInfo askQuestion(SpeechSynthesizer synth, String question) 
+        {
+            Console.WriteLine(question);
+            synth.Speak(question);
+            return Console.ReadKey(); 
+        }
+
         static void Main(string[] args) 
         {
 #region start up script
@@ -41,9 +48,7 @@ namespace Jarvis
                 {
                     case 1:
                         {
-                            Console.WriteLine("did you get albuterol?");
-                            synth.Speak("Did you get albuterol?");
-                            ConsoleKeyInfo KI = Console.ReadKey(); 
+                            ConsoleKeyInfo KI = askQuestion(synth,"Did you get albuterol?");
                             ///finding out if you got albuteol or not this leads into two if else loops
 #endregion
 #region albuterol timer
