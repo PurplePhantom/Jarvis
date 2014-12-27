@@ -13,12 +13,20 @@ namespace Jarvis
     //jake
     class Program
     {
+        static void(SpeechSynthesizer synth, String GB)
+        {
+            ///i would like to make a function that is like askQuestion but insted takes a string and both says and reads it
+        }
+
+#region askquestion
         static  ConsoleKeyInfo askQuestion(SpeechSynthesizer synth, String question) 
         {
             Console.WriteLine(question);
             synth.Speak(question);
             return Console.ReadKey(); 
         }
+        
+        #endregion
 
         static void Main(string[] args) 
         {
@@ -55,9 +63,7 @@ namespace Jarvis
 #region albuterol timer
                             if (KI.KeyChar == 'Y')//you got albuterol
                             {
-                                synth.Speak("would you like to run a ten second timer?");
-                                Console.WriteLine("would you like to run a ten second timer?");
-                                ConsoleKeyInfo KI2 = Console.ReadKey();
+                                ConsoleKeyInfo KI2 = askQuestion(synth, "Would you like to start a 10 second timer for albuterol");
                                 if (KI2.KeyChar == 'Y')
                                 {
                                     synth.Speak("starting count down for albuterol");
