@@ -8,9 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Jarvis
 {
-     //NEW LINE ADDED WITH NEW COLLABORATOR METHOD
-    //werwath !!!
-    //jake
     class Program
     {
         static void speakAndWait(SpeechSynthesizer synth, String statement, int millisecondsToWait)
@@ -23,19 +20,22 @@ namespace Jarvis
         }
         static void speakAbuterolCountdown(SpeechSynthesizer synth) 
         {
-                speakAndWait(synth,"starting count down for albuterol",2000);///2hree seconds
+                speakAndWait(synth,"starting count down for albuterol",2000);///2 seconds
                 speakAndWait(synth,"three",800);     
                 speakAndWait(synth,"two",800);  
                 speakAndWait(synth,"one",800); 
-                speakAndWait(synth,"puff",12000);///twelve seconds because it takes time ti do the puff and it wount kill you if you hold your breath to long
+                speakAndWait(synth,"puff",12000);///twelve seconds because it takes time to do the puff and it wount kill you if you hold your breath to long
                 return;                    
-
         }
-        static void newFunction(SpeechSynthesizer synth, String GB)
+        static void speakfloweventcountdawn(SpeechSynthesizer synth)
         {
-            ///i would like to make a function that is like askQuestion but insted takes a string and both says and reads it
+            speakAndWait(synth, "starting count down for flow vent", 2000);///2 seconds
+            speakAndWait(synth, "three", 800);
+            speakAndWait(synth, "two", 800);
+            speakAndWait(synth, "one", 800);
+            speakAndWait(synth, "puff", 12000);///twelve seconds because it takes time to do the puff and it wount kill you if you hold your breath to long
+            return;                   
         }
-
 #region askquestion
         static ConsoleKeyInfo askQuestion(SpeechSynthesizer synth, String question) 
         {
@@ -59,6 +59,7 @@ namespace Jarvis
 
             ConsoleKeyInfo k = askQuestion(synth, "Can you enter a letter?");
             Console.WriteLine(k.KeyChar);
+
 #region array
             //Get a random array of ints including 1,2,3  (e.g. 2,1,3 or 1,3,2, etc.)
             //How do I create a random array of int in C#?
@@ -94,7 +95,7 @@ namespace Jarvis
 
                                     speakAbuterolCountdown(synth);
                                     ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
-                                    speakAndWait(synth," your ten seconds are up",0);
+                                    speakAndWait(synth," your ten seconds are up",3000);
 
                                 }
                                 ///thats all fo this timer (its jsut for albuterol)
@@ -151,30 +152,32 @@ namespace Jarvis
             }
             if(KI3.KeyChar == 'S')
             {
-                speakAndWait(synth, "Okay so just finish it up, and you will be done in five, of ten minutes",0);
+                speakAndWait(synth, "Okay so just finish it up, and you will be done in five, or ten minutes",0);
             }
             if(KI3.KeyChar == 'N')
             {
                 speakAndWait(synth, "Then you need to start it again, and activly work and restarting it at check points!",0);
+            }
+            else
+            {
+                speakAndWait(synth, "Then you need to start it again, and activly work and restarting it at check points!", 0);
             }
                 Thread.Sleep(180000);
 
                 ConsoleKeyInfo KI4 = askQuestion(synth,"did you put pulmozyme in?");
             if(KI4.KeyChar == 'Y')
             {
-                Console.WriteLine("Good job remembring to put it in.");
-                synth.Speak("Good job remembring to put it in.");
+            speakAndWait(synth,"Good job remembring to put it in.",0);
             }
-            if(KI4.KeyChar == 'N')                                             
+            else                                             
             {
-                Console.WriteLine("well then can you please put your pulmozyme?");
-                synth.Speak("well then can you please put your pulmozyme?");
+               speakAndWait(synth,"well then can you please put your pulmozyme in?",0);///if you put in a invalid letter
             }
             //FIXME (dj80hd) What if the user enters a different letter like F ?
                 Thread.Sleep(10000);
                 #endregion
 #region getting off
-            speakAndWait(synth,"please turn of your computer.",0);
+            speakAndWait(synth,"please turn of your computer.",240000);///4 min
                 #endregion
 #region water
             switch (randnum)
@@ -194,38 +197,28 @@ namespace Jarvis
                             break;
                         }
  #endregion
+                        speakAndWait(synth, "now that you have put your nebulizer in water can you please get the saline and powder for kayston", 8000);///kayston is a small fast nebulizer that comes in a small glass vile 
+                                                                                                                                                        ///and a saline tube that you have to mix it takes around three minutes
+                        speakAndWait(synth, "would you please mix your kayston", 8000);
+                        speakAndWait(synth, "would you please put together you nebulizer", 10000);
+                        speakAndWait(synth, "please start your kayston I will run a four minute timer for you", 240000);
+                        speakAndWait(synth, "can you please put your nebulizer in water", 12000);
 #region flowe vent and noise spray
-                                    synth.Speak("starting count down for flowe vent");
-                                    Thread.Sleep(3000);
-                                    synth.Speak("three");
-                                    Thread.Sleep(800);
-                                    synth.Speak("Two");
-                                    Thread.Sleep(800);
-                                    synth.Speak("one");
-                                    Thread.Sleep(800);
-                                    synth.Speak("go");
-                                    Thread.Sleep(12000);
-                                    synth.Speak("ten seconds are done");
-                                    Thread.Sleep(1500);
-                                    synth.Speak("starting count down for flowe vent");
-                                    Thread.Sleep(3000);
-                                    synth.Speak("three");
-                                    Thread.Sleep(800);
-                                    synth.Speak("Two");
-                                    Thread.Sleep(800);
-                                    synth.Speak("one");
-                                    Thread.Sleep(800);
-                                    synth.Speak("go");
-                                    Thread.Sleep(12000);
-                                    synth.Speak("ten seconds are done");
-                                    Thread.Sleep(2000);
-                                    synth.Speak("please do your noise spray that you should have gotten");
-                                    break;
+                    ///this will all get replaced with a small function 
+                                    speakAbuterolCountdown(synth);
+                                    ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
+                                    speakAndWait(synth," your ten seconds are up",3000);
+
+                                    speakAbuterolCountdown(synth);
+                                    ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
+                                    speakAndWait(synth," your ten seconds are up",3000);
+                                    speakAndWait(synth, "pleae do the nose spray you should have gotten,", 6000);
+
                                 }
 #endregion
 #region ending
-                                speakAndWait(synth,"congragulations you have now run though a intire set of tharpy without missing anything",2000);
-                                speakAndWait(synth, "Jarvis singing off",0);
+                                speakAndWait(synth,"congragulations you have now run though a intire set of therapy without missing anything",4000);///meanse you did not forget anything
+                                speakAndWait(synth, "Jarvis signing off",0);
 #endregion                            
                         }
 
