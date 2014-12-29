@@ -227,11 +227,12 @@ namespace Jarvis
             #endregion
 
             TextReader tr = new StreamReader("SavingAnswers.txt");
-            string KI = tr.ReadLine();
-            KI = Convert.ToInt32(KI);
+            string aNumberString  = tr.ReadLine();
+            int aNumber = Convert.ToInt32(aNumberString);
             tr.Close();
             ///Code sorce http://stackoverflow.com/questions/15278839/how-do-i-save-variables-to-a-new-text-file-so-that-those-variables-are-loaded-th first answer 
             ///what did I do wrong I dont under stand
+            //ANSWER - You already used variable KI for something else
                     }
 
                 }
