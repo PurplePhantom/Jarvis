@@ -50,18 +50,18 @@ namespace Jarvis
 
         static void Main(string[] args)
         {
-            #region start up script
+#region start up script
             //starting my program
             SpeechSynthesizer synth = new SpeechSynthesizer();
             synth.Speak("wellcome to Jacob's personal reminder system");
             Random randomObject = new Random();
             int randnum = randomObject.Next(6) + 1;
             #endregion
-
+#region talking imput
             ConsoleKeyInfo k = askQuestion(synth, "Can you enter a letter?");
             Console.WriteLine(k.KeyChar);
-
-            #region array
+            #endregion
+#region array
             //Get a random array of ints including 1,2,3  (e.g. 2,1,3 or 1,3,2, etc.)
             //How do I create a random array of int in C#?
             System.Random rnd = new System.Random();
@@ -75,7 +75,7 @@ namespace Jarvis
             //How do i loop through an array of int i
             for (int i = 0; i < randomNumbers.Count(); i++)
             #endregion
-            #region did you get albuterol
+#region did you get albuterol
             {
                 switch (randomNumbers[i])
                 {
@@ -84,7 +84,7 @@ namespace Jarvis
                             ConsoleKeyInfo KI = askQuestion(synth, "Did you get albuterol?");
                             ///finding out if you got albuteol or not this leads into two if else loops
             #endregion
-                            #region albuterol timer
+#region albuterol timer
                             if (KI.KeyChar == 'Y')//you got albuterol
                             {
                                 ConsoleKeyInfo KI2 = askQuestion(synth, "Would you like to start a 10 second timer for albuterol");
@@ -106,13 +106,10 @@ namespace Jarvis
                                     Thread.Sleep(600);
                                     speakAndWait(synth, "okay thats fine, you can do your two puffs of albuterol and when your done with that, I will walk you through everything else", 25000);
                                 }
-                                TextWriter tw = new StreamWriter("SavingAnswers.txt");
-                                tw.WriteLine(KI);
-                                tw.Close();
                                
                             }
                             #endregion
-                            #region albuterol timer (DID NOT GET)
+#region albuterol timer (DID NOT GET)
                             else///you did not get albuterol
                             {
                                 speakAndWait(synth, "Would you please go get your albuterol", 6000);
@@ -126,7 +123,7 @@ namespace Jarvis
                             break;
                         }// case one ending
                             #endregion
-                    #region saline
+#region saline
                     case 2:
                         {
                             speakAndWait(synth, "would you so kindly get saline", 0);
@@ -134,7 +131,7 @@ namespace Jarvis
                             break;
                         }
                     #endregion
-                    #region pulmozyme
+#region pulmozyme
                     case 3:
                         {
                             speakAndWait(synth, "please go get your pulmozyme", 4000);
@@ -145,12 +142,13 @@ namespace Jarvis
                 }
             }
 
-            #region vest and pulymizin
+#region vest and pulymizin
             ///summery
             ///This is just runnign middle of my treatment reminders and cheacks
             ///this is just a small block and does not do much
             speakAndWait(synth, "starting a half hour timer for your vest.", 1800000);
             ConsoleKeyInfo KI3 = askQuestion(synth, "Is your vest done?");
+            Console.WriteLine("Y = on point 6 or done S = on point 4-5 N = on point 1-3.");
             if (KI3.KeyChar == 'Y')
             {
                 speakAndWait(synth, "congratulations you have run your vest perfectly", 0);
@@ -170,6 +168,7 @@ namespace Jarvis
             Thread.Sleep(180000);
 
             ConsoleKeyInfo KI4 = askQuestion(synth, "did you put pulmozyme in?");
+            Console.WriteLine("Y= yes you put your pulmozyme in");
             if (KI4.KeyChar == 'Y')
             {
                 speakAndWait(synth, "Good job remembring to put it in.", 0);
@@ -178,13 +177,12 @@ namespace Jarvis
             {
                 speakAndWait(synth, "well then can you please put your pulmozyme in?", 0);///if you put in a invalid letter
             }
-            //FIXME (dj80hd) What if the user enters a different letter like F ?
             Thread.Sleep(10000);
             #endregion
-            #region getting off
-            speakAndWait(synth, "please turn of your computer.", 240000);///4 min
+#region getting off
+            speakAndWait(synth, "please turn of your computer, you have four minutes.", 240000);///4 min
             #endregion
-            #region water
+#region water
             switch (randnum)
             {
                 case 1:
@@ -192,23 +190,26 @@ namespace Jarvis
                         ///this set of code is for when im do with tharpy 
                         ///it will reminde me to do kayston and to put my nebulizer in water to wash
 
-                        speakAndWait(synth, "please put you nebulizer in water.", 1500);
-                        speakAndWait(synth, "please get your kayston and start it", 0);
+                        speakAndWait(synth, "please put you nebulizer in water.",5000);
+                        speakAndWait(synth, "please get your kayston and start it", 3000);
                         break;
                     }
                 case 2:
                     {
-                        speakAndWait(synth, "pleease get you Kayston after you put your nebulizer in water", 0);
+                        speakAndWait(synth, "pleease get you Kayston after you put your nebulizer in water", 8000);
                         break;
                     }
             #endregion
-                    speakAndWait(synth, "now that you have put your nebulizer in water can you please get the saline and powder for kayston", 8000);///kayston is a small fast nebulizer that comes in a small glass vile 
+#region kayston
+                    Console.WriteLine("during this next set of instructions prease 'D' to move on");
+                    speakAndWait(synth, "now that you have put your nebulizer in water can you please get the saline and powder for kayston",8000);///kayston is a small fast nebulizer that comes in a small glass vile 
                     ///and a saline tube that you have to mix it takes around three minutes
                     speakAndWait(synth, "would you please mix your kayston", 8000);
                     speakAndWait(synth, "would you please put together you nebulizer", 10000);
                     speakAndWait(synth, "please start your kayston I will run a four minute timer for you", 240000);
                     speakAndWait(synth, "can you please put your nebulizer in water", 12000);
-                    #region flowe vent and noise spray
+#endregion
+#region flowe vent and noise spray
                     ///this will all get replaced with a small function 
                     speakAbuterolCountdown(synth);
                     ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
@@ -221,17 +222,10 @@ namespace Jarvis
 
             }
                     #endregion
-            #region ending
-            speakAndWait(synth, "congragulations you have now run though a intire set of therapy without missing anything", 4000);///meanse you did not forget anything
+#region ending
+            speakAndWait(synth, "congragulations you have now run though a intire set of therapy without missing anything", 700);///meanse you did not forget anything
             speakAndWait(synth, "Jarvis signing off", 0);
             #endregion
-
-            TextReader tr = new StreamReader("SavingAnswers.txt");
-            string KI = tr.ReadLine();
-            KI = Convert.ToInt32(KI);
-            tr.Close();
-            ///Code sorce http://stackoverflow.com/questions/15278839/how-do-i-save-variables-to-a-new-text-file-so-that-those-variables-are-loaded-th first answer 
-            ///what did I do wrong I dont under stand
                     }
 
                 }
