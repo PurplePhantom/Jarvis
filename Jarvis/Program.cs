@@ -224,6 +224,7 @@ namespace Jarvis
                     #endregion
 #region summry
             speakAndWait(synth, "now that you have done everything you were suposed to, lets see how you did over all", 2000);
+            KI = Console.ReadKey();
             if(KI.KeyChar == 'y')
             {
                 speakAndWait(synth, "You rememberd to do albuterol", 1500);
@@ -232,6 +233,7 @@ namespace Jarvis
             {
                 speakAndWait(synth, "You did not do albuterol befor I  had to remind you", 1500);
             }
+            KI2 = Console.ReadKey();
             if(KI2.KeyChar == 'y')
             {
                 speakAndWait(synth, "huh!",0);
