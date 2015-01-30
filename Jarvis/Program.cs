@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.IO;
 namespace Jarvis
 {
     class Program
@@ -37,7 +37,6 @@ namespace Jarvis
             speakAndWait(synth, "puff", 12000);///twelve seconds because it takes time to do the puff and it wount kill you if you hold your breath to long
             return;                   
         }
-#region askquestion
         static ConsoleKeyInfo askQuestion(SpeechSynthesizer synth, String question) 
         {
             Console.WriteLine(question);
@@ -45,15 +44,14 @@ namespace Jarvis
             ConsoleKeyInfo key =  Console.ReadKey();
             return key;
         }
-        
-        #endregion
-
         static void Main(string[] args)
         {
 #region start up script
             //starting my program
             SpeechSynthesizer synth = new SpeechSynthesizer();
-            synth.Speak("wellcome to Jacob's personal reminder system");
+            synth.Speak("Huh, hi");
+            synth.Speak("Huh,! hi");
+            synth.Speak("wellcome to Jarvis, some version long past count");
             Random randomObject = new Random();
             int randnum = randomObject.Next(6) + 1;
             #endregion
@@ -73,6 +71,8 @@ namespace Jarvis
             //randomNumbers[1] = 1
             //randomNumbers[2] = 3
             //How do i loop through an array of int i
+                            ConsoleKeyInfo KI;
+                            ConsoleKeyInfo KI2;
             for (int i = 0; i < randomNumbers.Count(); i++)
             #endregion
 #region did you get albuterol
@@ -81,14 +81,16 @@ namespace Jarvis
                 {
                     case 1:
                         {
-                            ConsoleKeyInfo KI = askQuestion(synth, "Did you get albuterol?");
+                                    KI = askQuestion(synth, "Did you get albuterol?");
                             ///finding out if you got albuteol or not this leads into two if else loops
             #endregion
 #region albuterol timer
-                            if (KI.KeyChar == 'Y')//you got albuterol
+                                    KI = Console.ReadKey();
+                            if (KI.KeyChar == 'y')//you got albuterol
                             {
-                                ConsoleKeyInfo KI2 = askQuestion(synth, "Would you like to start a 10 second timer for albuterol");
-                                if (KI2.KeyChar == 'Y')
+                            KI2 = askQuestion(synth, "Would you like to start a 10 second timer for albuterol");
+                            KI2 = Console.ReadKey();
+                                if (KI2.KeyChar == 'y')
                                 {
                                     speakAbuterolCountdown(synth);
                                     ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
@@ -116,9 +118,8 @@ namespace Jarvis
                                 speakAbuterolCountdown(synth);
                                 speakAndWait(synth, "your ten seconds are up", 3000);
                                 ///repeating the code so that it runns the counter tiwse because i have to du two puffs 
-                                Thread.Sleep(3000);
                                 speakAbuterolCountdown(synth);
-                                speakAndWait(synth, " your ten seconds are up", 0);
+                                speakAndWait(synth, " your ten seconds are up", 4000);
                             }
                             break;
                         }// case one ending
@@ -146,18 +147,18 @@ namespace Jarvis
             ///summery
             ///This is just runnign middle of my treatment reminders and cheacks
             ///this is just a small block and does not do much
-            speakAndWait(synth, "starting a half hour timer for your vest.", 1800000);
+            speakAndWait(synth, "starting a half hour timer for your vest.", 1800);//1800000
             ConsoleKeyInfo KI3 = askQuestion(synth, "Is your vest done?");
             Console.WriteLine("Y = on point 6 or done S = on point 4-5 N = on point 1-3.");
-            if (KI3.KeyChar == 'Y')
+            if (KI3.KeyChar == 'y')
             {
                 speakAndWait(synth, "congratulations you have run your vest perfectly", 0);
             }
-            if (KI3.KeyChar == 'S')
+            if (KI3.KeyChar == 's')
             {
                 speakAndWait(synth, "Okay so just finish it up, and you will be done in five, or ten minutes", 0);
             }
-            if (KI3.KeyChar == 'N')
+            if (KI3.KeyChar == 'n')
             {
                 speakAndWait(synth, "Then you need to start it again, and activly work and restarting it at check points!", 0);
             }
@@ -165,19 +166,18 @@ namespace Jarvis
             {
                 speakAndWait(synth, "Then you need to start it again, and activly work and restarting it at check points!", 0);
             }
-            Thread.Sleep(180000);
+            Thread.Sleep(1800);//180000
 
             ConsoleKeyInfo KI4 = askQuestion(synth, "did you put pulmozyme in?");
             Console.WriteLine("Y= yes you put your pulmozyme in");
-            if (KI4.KeyChar == 'Y')
+            if (KI4.KeyChar == 'y')
             {
-                speakAndWait(synth, "Good job remembring to put it in.", 0);
+                speakAndWait(synth, "Good job remembring to put it in.", 600000);
             }
             else
             {
-                speakAndWait(synth, "well then can you please put your pulmozyme in?", 0);///if you put in a invalid letter
+                speakAndWait(synth, "well then can you please put your pulmozyme in?", 600000);
             }
-            Thread.Sleep(10000);
             #endregion
 #region getting off
             speakAndWait(synth, "please turn of your computer, you have four minutes.", 240000);///4 min
@@ -200,15 +200,15 @@ namespace Jarvis
                         break;
                     }
             #endregion
-#region kayston
-                    Console.WriteLine("during this next set of instructions prease 'D' to move on");
-                    speakAndWait(synth, "now that you have put your nebulizer in water can you please get the saline and powder for kayston",8000);///kayston is a small fast nebulizer that comes in a small glass vile 
+//#region kayston
+                  //  Console.WriteLine("during this next set of instructions prease 'D' to move on");
+                  //  speakAndWait(synth, "now that you have put your nebulizer in water can you please get the saline and powder for kayston",8000);///kayston is a small fast nebulizer that comes in a small glass vile 
                     ///and a saline tube that you have to mix it takes around three minutes
-                    speakAndWait(synth, "would you please mix your kayston", 8000);
-                    speakAndWait(synth, "would you please put together you nebulizer", 10000);
-                    speakAndWait(synth, "please start your kayston I will run a four minute timer for you", 240000);
-                    speakAndWait(synth, "can you please put your nebulizer in water", 12000);
-#endregion
+                  //  speakAndWait(synth, "would you please mix your kayston", 8000);
+                  //  speakAndWait(synth, "would you please put together you nebulizer", 10000);
+                  //  speakAndWait(synth, "please start your kayston I will run a four minute timer for you", 240000);
+                  //  speakAndWait(synth, "can you please put your nebulizer in water", 12000);
+//#endregion
 #region flowe vent and noise spray
                     ///this will all get replaced with a small function 
                     speakAbuterolCountdown(synth);
@@ -222,12 +222,29 @@ namespace Jarvis
 
             }
                     #endregion
-#region ending
+#region summry
+            speakAndWait(synth, "now that you have done everything you were suposed to, lets see how you did over all", 2000);
+            if(KI.KeyChar == 'y')
+            {
+                speakAndWait(synth, "You rememberd to do albuterol", 1500);
+            }
+            else
+            {
+                speakAndWait(synth, "You did not do albuterol befor I  had to remind you", 1500);
+            }
+            if(KI2.KeyChar == 'y')
+            {
+                speakAndWait(synth, "huh!",0);
+            }
+
+            #region ending
             speakAndWait(synth, "congragulations you have now run though a intire set of therapy without missing anything", 700);///meanse you did not forget anything
             speakAndWait(synth, "Jarvis signing off", 0);
             #endregion
+            
                     }
 
-                }
-            }
+    }
 
+}
+#endregion
